@@ -15,8 +15,15 @@ def loadData():
 
 def saveData(data):
     with open(filename, "w") as file:
+        total = 0
+        count = 0
         for city, temp in data.items():
             file.write(f"{city}: {temp} °C\n")
+            total += temp
+            count += 1
+        if count > 0:
+            average = total / count
+            file.write(f"\nAverage temperature: {average:.2f} °C\n") 
 
 def analyse(data):
     if not data:
